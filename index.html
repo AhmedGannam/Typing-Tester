@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeMaster Pro - Advanced Typing Speed Test</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+
+  <header>
+  <div class="header-content">
+    <div class="header-text">
+      <h1>Typero</h1>
+      <p>The Ultimate Typing Practice Experience</p>
+    </div>
+    <div class="header-controls">
+      <button id="profileBtn">My Profile</button>
+      <button id="settingsBtn">Settings</button>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+    </div>
+  </div>
+</header>
+    
+    <div class="container">
+        <div class="card">
+            <div class="stats-box">
+                <div class="stat">
+                    <div class="stat-title">WPM</div>
+                    <div class="stat-value" id="wpm">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-title">CPM</div>
+                    <div class="stat-value" id="cpm">0</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-title">Accuracy</div>
+                    <div class="stat-value" id="accuracy">0%</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-title">Time Left</div>
+                    <div class="stat-value" id="timer">60s</div>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            
+            <div class="typing-text">
+                <div class="timer" id="countdown">60</div>
+                <p id="textToType"></p>
+            </div>
+            
+            <textarea id="inputArea" class="input-area" placeholder="Start typing when ready..." disabled></textarea>
+            
+            <div class="btn-group">
+                <button id="startBtn">Start Test</button>
+                <button id="resetBtn">Reset</button>
+                <button id="showKeyboardBtn">Show Keyboard</button>
+                <button id="practiceErrorsBtn" disabled>Practice Error Keys</button>
+
+            </div>
+            
+            <div class="keyboard-container" id="keyboardContainer" style="display: none;">
+                <h3>Virtual Keyboard</h3>
+                <div class="keyboard">
+                    <div class="keyboard-row">
+                        <div class="key" data-key="`">` ~</div>
+                        <div class="key" data-key="1">1 !</div>
+                        <div class="key" data-key="2">2 @</div>
+                        <div class="key" data-key="3">3 #</div>
+                        <div class="key" data-key="4">4 $</div>
+                        <div class="key" data-key="5">5 %</div>
+                        <div class="key" data-key="6">6 ^</div>
+                        <div class="key" data-key="7">7 &</div>
+                        <div class="key" data-key="8">8 *</div>
+                        <div class="key" data-key="9">9 (</div>
+                        <div class="key" data-key="0">0 )</div>
+                        <div class="key" data-key="-">- _</div>
+                        <div class="key" data-key="=">=</div>
+                        <div class="key backspace" data-key="Backspace">Backspace</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key tab" data-key="Tab">Tab</div>
+                        <div class="key" data-key="q">Q</div>
+                        <div class="key" data-key="w">W</div>
+                        <div class="key" data-key="e">E</div>
+                        <div class="key" data-key="r">R</div>
+                        <div class="key" data-key="t">T</div>
+                        <div class="key" data-key="y">Y</div>
+                        <div class="key" data-key="u">U</div>
+                        <div class="key" data-key="i">I</div>
+                        <div class="key" data-key="o">O</div>
+                        <div class="key" data-key="p">P</div>
+                        <div class="key" data-key="[">[</div>
+                        <div class="key" data-key="]">]</div>
+                        <div class="key" data-key="\">\\</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key caps" data-key="CapsLock">Caps</div>
+                        <div class="key" data-key="a">A</div>
+                        <div class="key" data-key="s">S</div>
+                        <div class="key" data-key="d">D</div>
+                        <div class="key" data-key="f">F</div>
+                        <div class="key" data-key="g">G</div>
+                        <div class="key" data-key="h">H</div>
+                        <div class="key" data-key="j">J</div>
+                        <div class="key" data-key="k">K</div>
+                        <div class="key" data-key="l">L</div>
+                        <div class="key" data-key=";">; :</div>
+                        <div class="key" data-key="'">' "</div>
+                        <div class="key enter" data-key="Enter">Enter</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key shift" data-key="Shift">Shift</div>
+                        <div class="key" data-key="z">Z</div>
+                        <div class="key" data-key="x">X</div>
+                        <div class="key" data-key="c">C</div>
+                        <div class="key" data-key="v">V</div>
+                        <div class="key" data-key="b">B</div>
+                        <div class="key" data-key="n">N</div>
+                        <div class="key" data-key="m">M</div>
+                        <div class="key" data-key=",">, <</div>
+                        <div class="key" data-key=".">. ></div>
+                        <div class="key" data-key="/">/ ?</div>
+                        <div class="key shift" data-key="ShiftRight">Shift</div>
+                    </div>
+                    <div class="keyboard-row">
+                        <div class="key" data-key="Control">Ctrl</div>
+                        <div class="key" data-key="Alt">Alt</div>
+                        <div class="key space" data-key=" ">Space</div>
+                        <div class="key" data-key="AltRight">Alt</div>
+                        <div class="key" data-key="ControlRight">Ctrl</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="result-box" id="resultBox">
+                <h3>Test Results</h3>
+                <div id="result-details">
+                    <div class="detail-item">
+                        <span class="detail-label">WPM (Words Per Minute)</span>
+                        <span class="detail-value" id="result-wpm">0</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">CPM (Characters Per Minute)</span>
+                        <span class="detail-value" id="result-cpm">0</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Accuracy</span>
+                        <span class="detail-value" id="result-accuracy">0%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Error Rate</span>
+                        <span class="detail-value" id="result-errors">0%</span>
+                    </div>
+                </div>
+                
+                <div id="error-analysis">
+                    <h4>Error Analysis</h4>
+                    <p>These are the keys you struggled with the most:</p>
+                    <div class="error-list" id="errorList"></div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Settings Modal -->
+        <div id="settingsModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeSettingsBtn">&times;</span>
+                <h2>Settings</h2>
+                <div class="settings-form">
+                    <div class="form-group">
+                        <label for="timeLimit">Time Limit (seconds)</label>
+                        <input type="number" id="timeLimit" min="15" max="300" value="60">
+                    </div>
+                    <div class="form-group">
+                        <label for="textType">Text Type</label>
+                        <select id="textType">
+                            <option value="random">Random Text</option>
+                            <option value="quotes">Famous Quotes</option>
+                            <option value="code">Programming Code</option>
+                            <option value="paragraph">Paragraphs</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="difficultyLevel">Difficulty Level</label>
+                        <select id="difficultyLevel">
+                            <option value="easy">Easy</option>
+                            <option value="medium">Medium</option>
+                            <option value="hard">Hard</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="soundEffects">Sound Effects</label>
+                        <select id="soundEffects">
+                            <option value="on">On</option>
+                            <option value="off">Off</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="saveSettingsBtn" style="margin-top: 1.5rem;">Save Settings</button>
+            </div>
+        </div>
+        
+        <!-- Profile Modal -->
+        <div id="profileModal" class="modal">
+            <div class="modal-content">
+                <span class="close" id="closeProfileBtn">&times;</span>
+                <h2>My Profile</h2>
+                <div class="profile-stats">
+                    <div class="profile-stat">
+                        <div class="profile-stat-title">Tests Completed</div>
+                        <div class="profile-stat-value" id="testsCompleted">0</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-title">Best WPM</div>
+                        <div class="profile-stat-value" id="bestWpm">0</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-title">Average WPM</div>
+                        <div class="profile-stat-value" id="avgWpm">0</div>
+                    </div>
+                    <div class="profile-stat">
+                        <div class="profile-stat-title">Average Accuracy</div>
+                        <div class="profile-stat-value" id="avgAccuracy">0%</div>
+                    </div>
+                    
+                </div>
+                
+                <div class="level-indicator">
+                    <div class="level-text" id="currentLevel">Lvl 1</div>
+                    <div class="level-bar">
+                        <div class="level-progress" id="levelProgress"></div>
+                    </div>
+                    <div class="level-text" id="nextLevel">Lvl 2</div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Your Badges</h3>
+                <div class="badges-container" id="badgesContainer">
+                    <div class="badge" data-badge="speed-demon">
+                        <span class="badge-icon">🚀</span>
+                        <span class="badge-tooltip">Speed Demon: Achieve 100+ WPM</span>
+                    </div>
+                    <div class="badge" data-badge="accuracy-king">
+                        <span class="badge-icon">🎯</span>
+                        <span class="badge-tooltip">Accuracy King: 100% accuracy</span>
+                    </div>
+                    <div class="badge" data-badge="marathon-typer">
+                        <span class="badge-icon">🏃</span>
+                        <span class="badge-tooltip">Marathon Typer: Complete 10 tests</span>
+                    </div>
+                    <div class="badge" data-badge="consistent">
+                        <span class="badge-icon">📊</span>
+                        <span class="badge-tooltip">Consistent: 5 tests with 90%+ accuracy</span>
+                    </div>
+                    <div class="badge" data-badge="early-bird">
+                        <span class="badge-icon">🌅</span>
+                        <span class="badge-tooltip">Early Bird: First test of the day</span>
+                    </div>
+                    <div class="badge" data-badge="night-owl">
+                        <span class="badge-icon">🦉</span>
+                        <span class="badge-tooltip">Night Owl: Test after midnight</span>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">History</h3>
+                <div id="history-chart"></div>
+                
+                <h3 style="margin-top: 2rem;">Typing Heat Map</h3>
+                <div class="heat-map" id="heatMap"></div>
+                
+                <h3 style="margin-top: 2rem;">Challenges</h3>
+                <div id="challengesContainer">
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <div class="challenge-title">Speed Burst</div>
+                            <div class="challenge-difficulty difficulty-easy">Easy</div>
+                        </div>
+                        <div class="challenge-description">
+                            Achieve 50+ WPM for a 30-second sprint.
+                        </div>
+                        <div class="challenge-footer">
+                            <div class="challenge-reward">
+                                Reward: <strong>50 XP</strong>
+                            </div>
+                            <button class="challenge-btn">Start</button>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <div class="challenge-title">Perfectionist</div>
+                            <div class="challenge-difficulty difficulty-medium">Medium</div>
+                        </div>
+                        <div class="challenge-description">
+                            Complete a 1-minute test with 95%+ accuracy.
+                        </div>
+                        <div class="challenge-footer">
+                            <div class="challenge-reward">
+                                Reward: <strong>100 XP</strong>
+                            </div>
+                            <button class="challenge-btn">Start</button>
+                        </div>
+                    </div>
+                    <div class="challenge-card">
+                        <div class="challenge-header">
+                            <div class="challenge-title">Code Master</div>
+                            <div class="challenge-difficulty difficulty-hard">Hard</div>
+                        </div>
+                        <div class="challenge-description">
+                            Type code snippets with 90%+ accuracy for 2 minutes.
+                        </div>
+                        <div class="challenge-footer">
+                            <div class="challenge-reward">
+                                Reward: <strong>200 XP</strong>
+                            </div>
+                            <button class="challenge-btn">Start</button>
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer" style="margin-top: 2rem;">
+                        <button id="clearProfileBtn" style="background-color: var(--danger);">
+                          Clear My Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Typero. All rights reserved.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+        
+</body>
+</html>
+
+
+
+
+
+
+
+    
+        
+       
